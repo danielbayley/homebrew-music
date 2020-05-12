@@ -1,0 +1,20 @@
+#! /bin/zsh --no-rcs --err-exit
+
+if (($#))
+then ls {*/,}$@:t:r.rb(N)
+elif ${CI-false}
+then ls */*.rb
+else git diff --cached --name-only --diff-filter ACM | grep .rb$
+fi | while read rb
+do unset download
+  case $rb in
+    Formula*)
+      brew audit --strict --online $rb
+      brew install $rb
+      exec brew test $rb;;
+
+    Cask*) download=${CI+download}
+  esac
+  brew cask style $rb
+  brew cask audit $rb --$download
+done

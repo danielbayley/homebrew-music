@@ -12,7 +12,7 @@ brew install #formula
 
 [Contribute][guide]
 -------------------
-Follow the contribution [guide], or copy and adapt an [existing] _[Cask]_ or _[formula]_.
+`git config core.hooksPath hooks` and follow the contribution [guide], or copy and adapt an [existing] _[Cask]_ or _[formula]_.
 
 License
 -------
