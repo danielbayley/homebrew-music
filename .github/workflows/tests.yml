@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches: master
+  pull_request:
+
+env:
+  HOMEBREW_MIXED_IN_KEY_VIP_CODE: ${{ secrets.HOMEBREW_MIXED_IN_KEY_VIP_CODE }}
+
+jobs:
+  tests:
+    runs-on: macos-latest
+
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+        with:
+          test-bot: false
+
+      - name: Cache Homebrew Bundler RubyGems
+        id: cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-rubygems-
+
+      - name: Install Homebrew Bundler RubyGems
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: brew install-bundler-gems
+
+      - run: .github/hooks/pre-commit

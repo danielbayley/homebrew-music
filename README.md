@@ -1,5 +1,3 @@
-[![badge][ci]][circle]
-
 _[Homebrew]_ Music
 ==================
 Homebrew _[tap]_ for music software, such as _[Native Instruments][NI]_ synths and presets, for use in a _[DAW]_ like _[Ableton Live][live]_.
@@ -14,7 +12,7 @@ brew install #formula
 
 [Contribute][guide]
 -------------------
-`git config core.hooksPath hooks` and follow the contribution [guide], or copy and adapt an [existing] _[Cask]_ or _[formula]_.
+`git config core.hooksPath .github/hooks` and follow the contribution [guide], or copy and adapt an [existing] _[Cask]_ or _[formula]_.
 
 License
 -------
@@ -22,9 +20,6 @@ License
 
 [MIT]:            LICENSE.md
 [Daniel Bayley]:  https://github.com/danielbayley
-
-[ci]:               https://img.shields.io/circleci/project/danielbayley/homebrew-music.svg?style=flat-square
-[circle]:           https://circleci.com/gh/danielbayley/homebrew-music
 
 [homebrew]:       https://brew.sh
 [tap]:            https://docs.brew.sh/Taps
