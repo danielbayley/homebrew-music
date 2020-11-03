@@ -8,13 +8,15 @@ cask "ableton-live-theme-dracula" do
   desc "Dark theme for Ableton Live"
   homepage "https://draculatheme.com/ableton-live"
 
-  theme = "ableton-live-master/#{name.first}.ask"
-  app, = Dir["#{appdir}/Ableton Live*.app"]
+  source = "ableton-live-master/#{name.first}.ask"
+  latest = "#{appdir}/Ableton Live*.app"
+  app = Dir[latest].max
+  target = "Contents/App-Resources/Themes/#{name.first}.ask"
 
   if app && File.directory?(app)
-    artifact theme, target: "#{app}/Contents/App-Resources/Themes/#{name.first}.ask"
+    artifact source, target: "#{app}/#{target}"
   else
-    installer manual: theme
-    uninstall {}
+    installer manual: source
+    uninstall delete: Dir["#{latest}/#{target}"]
   end
 end
