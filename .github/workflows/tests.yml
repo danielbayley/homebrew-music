@@ -4,9 +4,6 @@ on:
     branches: master
   pull_request:
 
-env:
-  HOMEBREW_MIXED_IN_KEY_VIP_CODE: ${{ secrets.HOMEBREW_MIXED_IN_KEY_VIP_CODE }}
-
 jobs:
   tests:
     runs-on: macos-latest
@@ -15,8 +12,6 @@ jobs:
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
-        with:
-          test-bot: false
 
       - name: Cache Homebrew Bundler RubyGems
         id: cache
@@ -30,4 +25,14 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
 
-      - run: .github/hooks/pre-commit
+      - env:
+          HOMEBREW_MIXED_IN_KEY_VIP_CODE: ${{ secrets.HOMEBREW_MIXED_IN_KEY_VIP_CODE }}
+
+        run: .github/hooks/pre-commit
+
+      - name: Upload bottles as artifact
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/upload-artifact@main
+        with:
+          name: bottles
+          path: '*.bottle.*'
