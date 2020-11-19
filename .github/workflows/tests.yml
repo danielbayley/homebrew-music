@@ -25,10 +25,9 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
 
-      - env:
-          HOMEBREW_MIXED_IN_KEY_VIP_CODE: ${{ secrets.HOMEBREW_MIXED_IN_KEY_VIP_CODE }}
+      - run: security add-generic-password -T /usr/bin/security -a $USER -s mixed-in-key -w ${{ secrets.HOMEBREW_MIXED_IN_KEY_VIP_CODE }}
 
-        run: .github/hooks/pre-commit
+      - run: .github/hooks/pre-commit
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
