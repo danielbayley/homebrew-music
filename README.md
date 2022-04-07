@@ -6,8 +6,8 @@ Install
 -------
 ~~~ sh
 brew tap danielbayley/music
-brew cask install #cask
-brew install #formula
+brew install --cask #cask
+brew install --formula #formulae
 ~~~
 
 [Contribute][guide]
@@ -23,10 +23,10 @@ License
 
 [homebrew]:       https://brew.sh
 [tap]:            https://docs.brew.sh/Taps
-[cask]:           https://github.com/Homebrew/homebrew-cask#homebrew-cask
+[cask]:           https://docs.brew.sh/Cask-Cookbook
 [formula]:        https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#formula-cookbook
 
-[guide]:          https://github.com/caskroom/homebrew-cask/blob/master/doc/development/adding_a_cask.md
+[guide]:          https://docs.brew.sh/Adding-Software-to-Homebrew#writing-the-cask
 [existing]:       Casks
 
 [NI]:             https://native-instruments.com
