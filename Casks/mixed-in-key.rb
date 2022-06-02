@@ -26,7 +26,7 @@ cask "mixed-in-key" do
   ]
 
   caveats <<~EOS
-    Cask requires a Keychain entry with with your VIP code.
+    Cask requires a Keychain entry with your VIP code.
 
     To add the Keychain entry:
       security add-generic-password -T /usr/bin/security -a #{ENV["USER"]} -s #{token} -Uw <vip code>
