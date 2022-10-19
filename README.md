@@ -1,12 +1,16 @@
+<img src="icon.svg" width="24%" align="right">
+
 _[Homebrew]_ Music
 ==================
-Homebrew _[tap]_ for music software, such as _[Native Instruments][NI]_ synths and presets, for use in a _[DAW]_ like _[Ableton Live][live]_.
+Homebrew _[tap]_ for music software, such as _[Native Instruments][NI]_ synths  
+and presets, for use in a _[DAW]_ like _[Ableton Live][live]_.
 
 Install
 -------
 ~~~ sh
 brew tap danielbayley/music
 brew install --cask #cask
+brew install --formula #formulae
 ~~~
 
 [Contribute][guide]
