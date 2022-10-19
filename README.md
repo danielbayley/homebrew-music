@@ -7,12 +7,15 @@ Install
 ~~~ sh
 brew tap danielbayley/music
 brew install --cask #cask
-brew install --formula #formulae
 ~~~
 
 [Contribute][guide]
 -------------------
-`git config core.hooksPath .github/hooks` and follow the contribution [guide], or copy and adapt an [existing] _[Cask]_ or _[formula]_.
+~~~ sh
+brew tap danielbayley/pipeline
+git config core.hooksPath .github/hooks
+~~~
+and follow the contribution [guide], or copy and adapt an [existing] _[Cask]_.
 
 License
 -------
@@ -24,7 +27,6 @@ License
 [homebrew]:       https://brew.sh
 [tap]:            https://docs.brew.sh/Taps
 [cask]:           https://docs.brew.sh/Cask-Cookbook
-[formula]:        https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#formula-cookbook
 
 [guide]:          https://docs.brew.sh/Adding-Software-to-Homebrew#writing-the-cask
 [existing]:       Casks
